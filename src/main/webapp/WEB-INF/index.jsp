@@ -1,5 +1,7 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="net.code.TrSellItemsEntity"%>
 <%@page import="net.code.TrSellItemsService"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -38,6 +40,7 @@
 
     <div class="maincol">
       <h2>Items</h2>
+<!--
       <div class="item-box">
         <img src="image/item.jpg" alt="商品" class="item-img">
         <div class="item-name">サボテン</div>
@@ -56,7 +59,20 @@
         <div class="item-price">¥35,000</div>
         <button>くわしく見る</button>
       </div>
-    </div>
+ -->
+      <% // jspでセッションスコープを利用する
+         List<TrSellItemsEntity> sellItemsList = (List<TrSellItemsEntity>) session.getAttribute("sellItemsList");
+         for (int i=0; i<sellItemsList.size(); i++) {
+           TrSellItemsEntity entity = sellItemsList.get(i); %>
+           <div class="item-box">
+             <img src="image/<%= entity.getSellItemsImageFileName1() %>" alt="商品" class="item-img">
+             <div class="item-name"><%= entity.getSellItemsName() %></div>
+             <div class="item-price">¥<%= entity.getSellItemsPrice() %></div>
+             <button>くわしく見る</button>
+           </div>
+      <% } %>
+
+     </div>
   </main>
 
   <footer>
