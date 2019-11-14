@@ -79,7 +79,7 @@ main .sidebar ul li a:hover {
     opacity: 0.5;
 }
 
-/* アイテム一覧 */
+/* TOPページ : メイン */
 main .maincol .item-box {
     width: 200px;
     float: left;
@@ -96,6 +96,7 @@ main .maincol .item-img {
 }
 
 main .maincol .item-name,
+main .maincol .item-description,
 main .maincol .item-price {
     color:#707070;
     line-height: 30px;
@@ -107,11 +108,30 @@ main .maincol button {
     border-radius: 16px;
     border: 1px solid #707070;
 }
-    
+
 main .maincol button:hover {
     background: #707070;
     color:#fff;
     cursor: pointer;
+}
+
+/* 詳細ページ : メイン */
+main .maincol .item-box-detail {
+    display: flex;
+}
+
+main .maincol .item-box-detail .item-img {
+    width: 300px;
+    border-radius: unset;
+    border: none;
+    object-fit: cover;
+}
+
+main .maincol .item-box-detail .detail-container {
+    color:#707070;
+    line-height: 30px;
+    font-size: 1.2em;
+	margin-left: 20px;
 }
 
 /***********/

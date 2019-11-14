@@ -15,8 +15,8 @@ public class TrSellItemsEntity {
     @Column(name="sell_items_num")
 	private int sellItemsNum;
 
-    @Column(name="items_num")
-	private int itemsNum;
+    @Column(name="sell_items_category")
+	private int sellItemsCategory;
 
     @Column(name="sell_items_price")
 	private int sellItemsPrice;
@@ -59,12 +59,12 @@ public class TrSellItemsEntity {
 		this.sellItemsNum = sellItemsNum;
 	}
 
-	public int getItemsNum() {
-		return itemsNum;
+	public int getSellItemsCategory() {
+		return sellItemsCategory;
 	}
 
-	public void setItemsNum(int itemsNum) {
-		this.itemsNum = itemsNum;
+	public void setSellItemsCategory(int sellItemsCategory) {
+		this.sellItemsCategory = sellItemsCategory;
 	}
 
 	public int getSellItemsPrice() {
@@ -115,11 +115,11 @@ public class TrSellItemsEntity {
 		this.sellItemsImageFileName4 = sellItemsImageFileName4;
 	}
 
-	public String getItemsDescription() {
+	public String getSellItemsDescription() {
 		return sellItemsDescription;
 	}
 
-	public void setItemsDescription(String sellItemsDescription) {
+	public void setSellItemsDescription(String sellItemsDescription) {
 		this.sellItemsDescription = sellItemsDescription;
 	}
 
