@@ -7,7 +7,6 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th scope="col">No.</th>
 				<th scope="col">商品名</th>
 				<th scope="col">個数</th>
 				<th scope="col">小計</th>
@@ -15,19 +14,17 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${cart.cartItems}" var="item" varStatus="status">
+			<c:forEach items="${cart.cartItems}" var="item">
 				<tr>
-					<td>${status.index + 1}</td>
-					<td>${item.value.getProduct().getSellItemsName()}</td>
+					<td>${item.value.getName()}</td>
 					<td>${item.value.getQuantity()}</td>
-					<td>¥${item.value.getTotalPrice()}</td>
+					<td>¥${item.value.getQuantity() * item.value.getPrice()}</td>
 					<td><button
-							onclick="location.href='/cart/remove/${item.value.getProduct().getSellItemsNum()}'">削除</button></td>
+							onclick="location.href='/cart/remove/${item.value.getId()}'">削除</button></td>
 				</tr>
 			</c:forEach>
 			<tr>
 				<td>合計</td>
-				<td></td>
 				<td></td>
 				<td>¥${cart.grandTotal}</td>
 				<td></td>

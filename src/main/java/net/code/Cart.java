@@ -31,12 +31,11 @@ public class Cart {
 
     public void addCartItem(CartItem item) {
 
-        int id = item.getProduct().getSellItemsNum();
+        int id = item.getId();
 
         if(cartItems.containsKey(id)) {
             CartItem existingCartItem = cartItems.get(id);
             existingCartItem.setQuantity(existingCartItem.getQuantity() + item.getQuantity());
-            existingCartItem.setTotalPrice(existingCartItem.getQuantity() * item.getProduct().getSellItemsPrice());
             cartItems.put(new Integer(id), existingCartItem);
         } else {
             cartItems.put(id, item);
@@ -57,7 +56,7 @@ public class Cart {
         grandTotal = 0;
 
         for (CartItem item : cartItems.values()) {
-            grandTotal += item.getTotalPrice();
+            grandTotal += (item.getQuantity() * item.getPrice());
         }
     }
 }

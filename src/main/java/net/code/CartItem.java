@@ -2,28 +2,39 @@ package net.code;
 
 public class CartItem {
 
-    private TrSellItemsEntity product;
+    private int id;
+    private String name;
     private int quantity;
-    private int totalPrice;
+    private int price;
 
     /**
-     * @param product
+     * @param id
+     * @param name
      * @param quantity
      * @param totalPrice
      */
-    public CartItem(TrSellItemsEntity product) {
+    public CartItem(TrSellItemsEntity item) {
         super();
-        this.product = product;
+        this.id = item.getSellItemsNum();
+        this.name = item.getSellItemsName();
         this.quantity = 1;
-        this.totalPrice = product.getSellItemsPrice();
+        this.price = item.getSellItemsPrice();
     }
 
-    public TrSellItemsEntity getProduct() {
-        return product;
+    public int getId() {
+        return id;
     }
 
-    public void setProduct(TrSellItemsEntity product) {
-        this.product = product;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getQuantity() {
@@ -34,11 +45,11 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    public int getTotalPrice() {
-        return totalPrice;
+    public int getPrice() {
+        return price;
     }
 
-    public void setTotalPrice(int totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setPrice(int price) {
+        this.price = price;
     }
 }
