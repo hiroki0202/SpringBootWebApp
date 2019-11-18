@@ -3,10 +3,16 @@ package net.code;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -80,5 +86,38 @@ public class AppController {
         session.setAttribute("cart", cart);
 
         return "redirect:/cart";
+    }
+
+    @InitBinder
+    public void InitBinder(WebDataBinder dataBinder) {
+
+        StringTrimmerEditor editor = new StringTrimmerEditor(true);
+        dataBinder.registerCustomEditor(String.class, editor);
+    }
+
+    @RequestMapping("/showform")
+    public String showForm(Model model) {
+
+        // 支払情報オブジェクトを作成してモデルに登録
+        model.addAttribute("checkout", new Checkout());
+
+         return "checkout";
+    }
+
+    @RequestMapping("/purchase")
+    public String purchase(
+            @Valid @ModelAttribute("checkout") Checkout checkout,
+            BindingResult result) {
+
+        if (result.hasErrors()) {
+            // 元の画面にエラーメッセージを表示
+            return "checkout";
+        }
+
+        // カートの中身を初期化
+        Cart cart = new Cart();
+        session.setAttribute("cart", cart);
+
+        return "purchase";
     }
 }

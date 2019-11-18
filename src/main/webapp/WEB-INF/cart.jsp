@@ -32,7 +32,9 @@
 		</tbody>
 	</table>
 	<button onclick="location.href='/'">買い物を続ける</button>
-	<button onclick="location.href='/purchese'">購入画面へ進む</button>
+	<c:if test="${cart.grandTotal > 0}" >
+		<button onclick="location.href='/showform'">購入画面へ進む</button>
+	</c:if>
 </div>
 
 <%@include file="/WEB-INF/template/footer.jsp"%>

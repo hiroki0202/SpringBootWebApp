@@ -134,6 +134,10 @@ main .maincol .item-box-detail .detail-container {
 	margin-left: 20px;
 }
 
+.error {
+	color: red;
+}
+
 /***********/
 /* フッタ */
 /***********/
