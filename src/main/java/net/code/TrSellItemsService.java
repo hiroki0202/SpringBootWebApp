@@ -2,23 +2,8 @@ package net.code;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+public interface TrSellItemsService {
 
-@Service
-public class TrSellItemsService {
-
-    @Autowired
-    private TrSellItemsRepository sellItemsRepository;
-
-    public List<TrSellItemsEntity> findAll() {
-
-        return sellItemsRepository.findAll();
-    }
-
-    public TrSellItemsEntity getOne(int id) {
-
-        return sellItemsRepository.getOne(id);
-    }
+    public List<TrSellItemsEntity> findAll();
+    public TrSellItemsEntity getOne(int id);
 }
-
